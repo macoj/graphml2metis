@@ -11,7 +11,7 @@
 #include "export_nodes.h"
 
 void print_help() {
-	printf("$graphml2metis -i graphml_filename -o metis_output_filename [-a attributes_output_filename]");
+	printf("Usage:\n$graphml2metis -i graphml_filename [-o metis_output_filename] [-a attributes_output_filename]\n");
 }
 
 int main(int argc, char **argv) {
@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
 				printf("I could not understand '%s', parser error.\n", argv[1]);
 				break;
 			case IGRAPH_UNIMPLEMENTED:
-				printf("I can not understand '%s', there is no support to graphml reading.\n", argv[1]);
+				printf("I can not understand '%s', there is no support to graphml files reading.\n", argv[1]);
 				break;
 			default:
 				break;

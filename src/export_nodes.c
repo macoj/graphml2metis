@@ -22,6 +22,7 @@ void export_nodes(const igraph_t* graph, FILE * output, FILE * attributes_output
 	igraph_strvector_t vertices_attributes_names;
 
 	int attribute = 0;
+	// are we exporting also the attributes?
 	if (attributes_output != NULL) {
 		igraph_vector_init(&vertices_attributes_types, 0);
 		igraph_strvector_init(&vertices_attributes_names, 0);
