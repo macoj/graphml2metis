@@ -1,15 +1,18 @@
 USER_OBJS :=
 LIBS := -ligraph
-
+RM := rm -f
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-./src/export_nodes.c ./src/main.c  
+./src/export_nodes.c \
+./src/main.c 
 
 OBJS += \
-./src/export_nodes.o ./src/main.o
+./src/export_nodes.o \
+./src/main.o 
 
 C_DEPS += \
-./src/export_nodes.d ./src/main.d
+./src/export_nodes.d \
+./src/main.d 
 
 all: graphml2metis
 
