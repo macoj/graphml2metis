@@ -69,7 +69,6 @@ void export_nodes(const igraph_t* graph, FILE * output, FILE * attributes_output
 			}
 			fprintf(attributes_output, "\n");
 		}
-
 		// exports adjacency
 		if (output != NULL) {
 			number_of_neigbors = 0;
