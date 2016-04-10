@@ -56,7 +56,6 @@ void export_nodes(const igraph_t* graph, FILE * output, FILE * attributes_output
 			int attribute;
 			for (attribute = 0; attribute < vertices_attributes_names.len - 1; attribute++) {
 				if (VECTOR(vertices_attributes_types)[attribute] == IGRAPH_ATTRIBUTE_NUMERIC) {
-					fprintf(attributes_output, "");
 					igraph_real_fprintf(attributes_output, VAN(graph, STR(vertices_attributes_names, attribute), vertice));
 					fprintf(attributes_output, ",");
 				} else {
