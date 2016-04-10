@@ -83,11 +83,7 @@ void export_nodes(const igraph_t* graph, FILE * output, FILE * attributes_output
 			}
 			igraph_vit_destroy(&adjacent_vertex_iterator);
 			igraph_vs_destroy(&adjacent_vertex_selector);
-			if (number_of_neigbors > 0) {
-				fprintf(output, "\n");
-			} else {
-				printf("Warning: a singleton will be removed from the graph.\n");
-			}
+			fprintf(output, "\n");
 		}
 		IGRAPH_VIT_NEXT(vertex_iterator);
 	}
