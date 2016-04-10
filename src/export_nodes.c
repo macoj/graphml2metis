@@ -20,7 +20,7 @@ void export_nodes(const igraph_t* graph, FILE * output, FILE * attributes_output
 	igraph_integer_t edges_number;
 	igraph_vector_t vertices_attributes_types;
 	igraph_strvector_t vertices_attributes_names;
-
+	int number_of_neigbors;
 	int attribute = 0;
 	// are we exporting also the attributes?
 	if (attributes_output != NULL) {
@@ -72,16 +72,22 @@ void export_nodes(const igraph_t* graph, FILE * output, FILE * attributes_output
 		}
 		// exports adjacency
 		if (output != NULL) {
+			number_of_neigbors = 0;
 			igraph_vs_adj(&adjacent_vertex_selector, vertice, IGRAPH_ALL);
 			igraph_vit_create(graph, adjacent_vertex_selector, &adjacent_vertex_iterator);
 			while (!IGRAPH_VIT_END(adjacent_vertex_iterator)) {
 				// igraph indexes starting from 0, we need it starting from 1
 				fprintf(output, "%li ", ((long int) IGRAPH_VIT_GET(adjacent_vertex_iterator) + 1));
 				IGRAPH_VIT_NEXT(adjacent_vertex_iterator);
+				number_of_neigbors++;
 			}
 			igraph_vit_destroy(&adjacent_vertex_iterator);
 			igraph_vs_destroy(&adjacent_vertex_selector);
-			fprintf(output, "\n");
+			if (number_of_neigbors > 0) {
+				fprintf(output, "\n");
+			} else {
+				printf("Warning: a singleton will be removed from the graph.\n");
+			}
 		}
 		IGRAPH_VIT_NEXT(vertex_iterator);
 	}
